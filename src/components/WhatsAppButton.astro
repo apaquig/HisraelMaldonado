@@ -8,7 +8,7 @@ interface Props {
 const { className = '' } = Astro.props;
 const { whatsapp } = siteConfig;
 const rawPhone = whatsapp.phoneRaw.replace(/\D/g, '');
-const whatsappUrl = `https://wa.me/${rawPhone}?text=${encodeURIComponent(whatsapp.defaultMessage)}`;
+const whatsappUrl = whatsapp.directUrl || `https://api.whatsapp.com/send?phone=${rawPhone}&text=${encodeURIComponent(whatsapp.defaultMessage)}`;
 ---
 
 <div class={`whatsapp-cta-container animate-in delay-2 ${className}`}>

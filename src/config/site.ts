@@ -33,7 +33,7 @@ export interface SiteConfig {
   verifiedText: string;
 
   // --- CONFIGURACIÓN DE DOMINIO Y SEO ---
-  /** Cambia aquí tu dominio oficial definitivo una vez publicado (ej. https://israelmaldonado.com) */
+  /** Dominio oficial / GitHub Pages */
   siteUrl: string;
   siteName: string;
   metaTitle: string;
@@ -58,6 +58,8 @@ export interface SiteConfig {
     badgeText: string;
     /** Indicador de disponibilidad */
     statusText: string;
+    /** URL de redirección universal optimizada para Meta */
+    directUrl: string;
   };
 
   // --- REDES SOCIALES OFICIALES ---
@@ -71,10 +73,10 @@ export interface SiteConfig {
   };
 }
 
-// Generador seguro de enlace de WhatsApp con mensaje precargado
+// Generador de enlace oficial universal de WhatsApp optimizado para navegadores Meta y móviles
 const rawPhone = "19733804633"; // +1 973 380 4633
 const defaultWaMsg = "Hola, vi tu página de ATOMY y quisiera más información.";
-const whatsappUrl = `https://wa.me/${rawPhone}?text=${encodeURIComponent(defaultWaMsg)}`;
+const whatsappUrl = `https://api.whatsapp.com/send?phone=${rawPhone}&text=${encodeURIComponent(defaultWaMsg)}`;
 
 export const siteConfig: SiteConfig = {
   // 1. IDENTIDAD DE LA MARCA & PERFIL
@@ -87,10 +89,6 @@ export const siteConfig: SiteConfig = {
   verifiedText: "Distribuidor Oficial Atomy",
 
   // 2. CONFIGURACIÓN SEO Y DOMINIO DEFINITIVO
-  /**
-   * 👉 COLOCA AQUÍ TU DOMINIO FINAL
-   * Ej: "https://israelmaldonado.com" o "https://visionatomy.com"
-   */
   siteUrl: "https://apaquig.github.io/HisraelMaldonado",
   siteName: "ATOMY | Israel Maldonado - Contacto y Redes Oficiales",
   metaTitle: "Israel Maldonado | Líder Oficial ATOMY - Contacto y Redes",
@@ -119,16 +117,16 @@ export const siteConfig: SiteConfig = {
     defaultMessage: defaultWaMsg,
     buttonText: "Contáctame por WhatsApp",
     badgeText: "Canal Directo y Asesoría Inmediata",
-    statusText: "Disponible para asesoría"
+    statusText: "Disponible para asesoría",
+    directUrl: whatsappUrl
   },
 
-  // 4. REDES SOCIALES Y CANALES
+  // 4. REDES SOCIALES Y CANALES (URLs con redirección limpia universal)
   socialLinks: [
     {
       id: "whatsapp-primary",
       platform: "WhatsApp",
       username: "+1 973 380 4633",
-      /** URL oficial directa y segura a WhatsApp */
       url: whatsappUrl,
       ariaLabel: "Contactar a Israel Maldonado directamente por WhatsApp al +1 973 380 4633",
       theme: "whatsapp",
@@ -139,11 +137,8 @@ export const siteConfig: SiteConfig = {
       id: "instagram-official",
       platform: "Instagram",
       username: "@israelmaldonado.atomy",
-      /**
-       * 👉 URL OFICIAL DE INSTAGRAM:
-       */
-      url: "https://www.instagram.com/israelmaldonado.atomy",
-      ariaLabel: "Seguir la cuenta de Instagram de Israel Maldonado (@israelmaldonado.atomy)",
+      url: "https://www.instagram.com/israelmaldonado.atomy/",
+      ariaLabel: "Abrir perfil de Instagram de Israel Maldonado (@israelmaldonado.atomy)",
       theme: "instagram",
       badgeText: "Fotos y Novedades",
       icon: "instagram"
@@ -152,12 +147,8 @@ export const siteConfig: SiteConfig = {
       id: "tiktok-official",
       platform: "TikTok",
       username: "@atomyisraelmaldonado",
-      /**
-       * 👉 COLOCA AQUÍ LA URL OFICIAL DE TIKTOK:
-       * Formato: "https://www.tiktok.com/@atomyisraelmaldonado"
-       */
       url: "https://www.tiktok.com/@atomyisraelmaldonado",
-      ariaLabel: "Seguir la cuenta de TikTok de Israel Maldonado (@atomyisraelmaldonado)",
+      ariaLabel: "Abrir cuenta de TikTok de Israel Maldonado (@atomyisraelmaldonado)",
       theme: "tiktok",
       badgeText: "Videos y Testimonios",
       icon: "tiktok"
@@ -166,12 +157,8 @@ export const siteConfig: SiteConfig = {
       id: "youtube-official",
       platform: "YouTube",
       username: "VisionATOMY",
-      /**
-       * 👉 COLOCA AQUÍ LA URL OFICIAL DE YOUTUBE:
-       * Formato: "https://www.youtube.com/@VisionATOMY" o enlace a canal
-       */
       url: "https://www.youtube.com/@VisionATOMY",
-      ariaLabel: "Suscribirse al canal oficial de YouTube VisionATOMY",
+      ariaLabel: "Abrir canal oficial de YouTube VisionATOMY",
       theme: "youtube",
       badgeText: "Presentaciones y Capacitación",
       icon: "youtube"
@@ -180,12 +167,8 @@ export const siteConfig: SiteConfig = {
       id: "facebook-official",
       platform: "Facebook",
       username: "VisionAtomyIsrael",
-      /**
-       * 👉 COLOCA AQUÍ LA URL OFICIAL DE FACEBOOK:
-       * Formato: "https://www.facebook.com/VisionAtomyIsrael"
-       */
-      url: "https://www.facebook.com/VisionAtomyIsrael",
-      ariaLabel: "Visitar la página oficial de Facebook VisionAtomyIsrael",
+      url: "https://www.facebook.com/VisionAtomyIsrael/",
+      ariaLabel: "Abrir página oficial de Facebook VisionAtomyIsrael",
       theme: "facebook",
       badgeText: "Comunidad y Noticias",
       icon: "facebook"
