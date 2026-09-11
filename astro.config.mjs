@@ -10,6 +10,6 @@ export default defineConfig({
     host: true
   },
   build: {
-    inlineStylesheets: 'auto'
+    inlineStylesheets: 'always'
   }
 });
