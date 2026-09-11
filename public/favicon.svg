@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <rect width="64" height="64" rx="16" fill="#FFFFFF"/>
+  <!-- Emblema oficial atom美 de Atomy -->
+  <g fill="none" stroke="#00A0E9" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Cuernos superiores -->
+    <path d="M22 14 L26 20"/>
+    <path d="M42 14 L38 20"/>
+    <!-- 3 barras -->
+    <path d="M18 25 H46"/>
+    <path d="M21 33 H43"/>
+    <path d="M16 41 H48"/>
+    <!-- Vertical central -->
+    <path d="M32 20 V42"/>
+    <!-- Piernas y base -->
+    <path d="M29 42 L18 54"/>
+    <path d="M35 42 L46 54"/>
+    <path d="M17 48 H47"/>
+  </g>
+</svg>

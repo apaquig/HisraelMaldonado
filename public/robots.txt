@@ -1,0 +1,6 @@
+# robots.txt para https://israelmaldonado-atomy.com
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://israelmaldonado-atomy.com/sitemap-index.xml

@@ -1,0 +1,194 @@
+---
+import { siteConfig } from '../config/site';
+
+interface Props {
+  className?: string;
+}
+
+const { className = '' } = Astro.props;
+const { whatsapp } = siteConfig;
+const rawPhone = whatsapp.phoneRaw.replace(/\D/g, '');
+const whatsappUrl = `https://wa.me/${rawPhone}?text=${encodeURIComponent(whatsapp.defaultMessage)}`;
+---
+
+<div class={`whatsapp-cta-container animate-in delay-2 ${className}`}>
+  <a
+    href={whatsappUrl}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="whatsapp-card"
+    aria-label={`Contactar a ${siteConfig.name} por WhatsApp al ${whatsapp.phoneDisplay}. Inicia una conversación directa.`}
+    id="cta-whatsapp-primary"
+  >
+    <!-- Efecto de brillo de fondo -->
+    <div class="whatsapp-glow" aria-hidden="true"></div>
+
+    <!-- Contenido del botón -->
+    <div class="whatsapp-content">
+      <!-- Icono Oficial WhatsApp -->
+      <div class="whatsapp-icon-box" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="30" height="30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.472 14.382C17.172 14.232 15.696 13.508 15.42 13.408C15.144 13.308 14.944 13.258 14.744 13.558C14.544 13.858 13.97 14.532 13.796 14.732C13.622 14.932 13.448 14.958 13.148 14.808C12.848 14.658 11.882 14.342 10.742 13.326C9.854 12.534 9.254 11.556 9.08 11.256C8.906 10.956 9.062 10.794 9.212 10.644C9.346 10.51 9.512 10.292 9.662 10.118C9.812 9.944 9.862 9.818 9.962 9.618C10.062 9.418 10.012 9.244 9.938 9.094C9.864 8.944 9.264 7.47 9.014 6.87C8.77 6.286 8.522 6.366 8.338 6.358L7.764 6.35C7.564 6.35 7.24 6.426 6.966 6.726C6.692 7.026 5.918 7.75 5.918 9.224C5.918 10.698 6.992 12.122 7.142 12.322C7.292 12.522 9.254 15.548 12.268 16.85C12.984 17.16 13.542 17.346 13.978 17.484C14.698 17.712 15.352 17.68 15.87 17.602C16.448 17.514 17.648 16.874 17.898 16.174C18.148 15.474 18.148 14.874 18.074 14.75C18 14.624 17.772 14.532 17.472 14.382Z" fill="#FFFFFF"/>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M12.004 2C6.48 2 2 6.478 2 12C2 13.844 2.502 15.572 3.378 17.062L2.096 21.758L6.908 20.514C8.358 21.328 10.024 21.8 11.996 21.8C17.52 21.8 22 17.322 22 11.8C22 6.278 17.52 2 12.004 2ZM12.004 20.088C10.334 20.088 8.804 19.608 7.514 18.776L7.204 18.574L4.254 19.336L5.04 16.468L4.814 16.108C3.896 14.748 3.376 13.112 3.376 11.8C3.376 7.24 7.244 3.372 12.004 3.372C16.764 3.372 20.632 7.24 20.632 11.8C20.632 16.36 16.764 20.088 12.004 20.088Z" fill="#FFFFFF"/>
+        </svg>
+      </div>
+
+      <!-- Textos del botón -->
+      <div class="whatsapp-texts">
+        <div class="status-row">
+          <span class="pulse-indicator" aria-hidden="true"></span>
+          <span class="status-label">{whatsapp.badgeText}</span>
+        </div>
+        <span class="whatsapp-main-action">{whatsapp.buttonText}</span>
+        <span class="whatsapp-number">{whatsapp.phoneDisplay}</span>
+      </div>
+
+      <!-- Flecha de acción -->
+      <div class="whatsapp-arrow" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14"></path>
+          <path d="m12 5 7 7-7 7"></path>
+        </svg>
+      </div>
+    </div>
+  </a>
+</div>
+
+<style>
+  .whatsapp-cta-container {
+    width: 100%;
+    position: relative;
+  }
+
+  .whatsapp-card {
+    display: block;
+    position: relative;
+    width: 100%;
+    min-height: 76px;
+    background: linear-gradient(135deg, #1fa855 0%, #128c7e 100%);
+    border: 1.5px solid rgba(255, 255, 255, 0.35);
+    border-radius: var(--radius-md);
+    padding: 0.9rem 1.25rem;
+    color: #ffffff;
+    box-shadow: 0 10px 28px rgba(37, 211, 102, 0.32), 0 2px 8px rgba(0, 0, 0, 0.3);
+    transition: transform var(--transition-spring), box-shadow var(--transition-normal), border-color var(--transition-normal);
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .whatsapp-card:hover {
+    transform: translateY(-3px) scale(1.01);
+    box-shadow: 0 16px 36px rgba(37, 211, 102, 0.45), 0 4px 12px rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.6);
+  }
+
+  .whatsapp-card:active {
+    transform: translateY(1px) scale(0.99);
+    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
+  }
+
+  /* Resplandor animado de fondo */
+  .whatsapp-glow {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.2) 0%, transparent 60%);
+    pointer-events: none;
+    transition: opacity var(--transition-normal);
+  }
+
+  .whatsapp-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .whatsapp-icon-box {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    border-radius: var(--radius-full);
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.3);
+  }
+
+  .whatsapp-texts {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .status-row {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 0.15rem;
+  }
+
+  .status-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: rgba(255, 255, 255, 0.92);
+  }
+
+  .whatsapp-main-action {
+    font-size: 1.15rem;
+    font-weight: 800;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    color: #ffffff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  }
+
+  .whatsapp-number {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.85);
+    margin-top: 0.1rem;
+  }
+
+  .whatsapp-arrow {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    border-radius: var(--radius-full);
+    background: rgba(255, 255, 255, 0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform var(--transition-normal), background-color var(--transition-fast);
+  }
+
+  .whatsapp-card:hover .whatsapp-arrow {
+    transform: translateX(4px);
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  @media (max-width: 380px) {
+    .whatsapp-card {
+      padding: 0.75rem 1rem;
+      min-height: 70px;
+    }
+    .whatsapp-main-action {
+      font-size: 1.05rem;
+    }
+    .whatsapp-icon-box {
+      width: 42px;
+      height: 42px;
+      min-width: 42px;
+    }
+  }
+</style>

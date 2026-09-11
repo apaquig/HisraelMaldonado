@@ -1,0 +1,257 @@
+/* ==========================================================================
+   ATOMY OFFICIAL CYAN & WHITE GRADIENT THEME
+   - Móvil (< 640px): Pantalla completa fluida con gradiente Blanco -> Cyan.
+   - Escritorio (>= 640px): Marco tipo dispositivo móvil premium centrado con
+     fondo exterior opaco y elegante.
+   ========================================================================== */
+
+:root {
+  /* Color Oficial ATOMY Cyan Extraído del Usuario */
+  --atomy-cyan: #00a0e9;
+  --atomy-cyan-dark: #0077c8;
+  --atomy-cyan-deep: #004b87;
+  --atomy-navy: #002b54;
+  --atomy-cyan-light: #e0f2fe;
+
+  /* Gradiente Blanco en la Parte Superior hacia Atomy Cyan */
+  --bg-gradient: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #f2f9fe 8%,
+    #d8f0fd 20%,
+    #68c8f8 36%,
+    #00a0e9 54%,
+    #0074c2 78%,
+    #004780 100%
+  );
+
+  /* Tarjetas Modernas en Blanco Puro */
+  --bg-card: #ffffff;
+  --bg-card-hover: #ffffff;
+  --border-card: rgba(255, 255, 255, 0.95);
+  --border-card-hover: #ffffff;
+
+  /* Redes Oficiales */
+  --whatsapp-green: #25d366;
+  --whatsapp-dark: #128c7e;
+  --whatsapp-glow: rgba(37, 211, 102, 0.4);
+  --youtube-red: #ff0000;
+  --facebook-blue: #1877f2;
+  --tiktok-dark: #000000;
+
+  /* Textos y Jerarquía */
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+  --text-hero-title: #002b54;
+
+  /* Sombras y Elevaciones */
+  --shadow-sm: 0 4px 14px rgba(0, 40, 80, 0.12);
+  --shadow-md: 0 10px 28px rgba(0, 35, 75, 0.18);
+  --shadow-lg: 0 20px 45px rgba(0, 30, 80, 0.25);
+  --shadow-wa: 0 12px 30px rgba(18, 140, 126, 0.35);
+
+  /* Dimensiones y Espaciados */
+  --container-max-w: 480px;
+  --radius-sm: 14px;
+  --radius-md: 20px;
+  --radius-lg: 26px;
+  --radius-full: 9999px;
+
+  /* Transiciones */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-spring: 350ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Reset y Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  color: var(--text-primary);
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  background-color: #050b14;
+}
+
+/* ==========================================================================
+   BODY & ESTRUCTURA PRINCIPAL (Mobile First)
+   ========================================================================== */
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--bg-gradient);
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 2.25rem 1.15rem 3.5rem;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.page-wrapper {
+  width: 100%;
+  max-width: var(--container-max-w);
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+/* ==========================================================================
+   DESKTOP VIEWPORT (>= 640px): FONDO OPACO EXTERIOR Y MARCO TIPO MÓVIL
+   ========================================================================== */
+@media (min-width: 640px) {
+  body {
+    /* Fondo opaco atmosférico de lujo para pantallas grandes */
+    background: radial-gradient(circle at 50% 25%, #0d1e38 0%, #07101f 45%, #03070e 100%);
+    background-attachment: fixed;
+    padding: 3.5rem 1.5rem 4rem;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Efecto de resplandor ambiental detrás del marco */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 800px;
+    background: radial-gradient(ellipse at center, rgba(0, 160, 233, 0.18) 0%, rgba(0, 43, 84, 0.08) 50%, transparent 70%);
+    filter: blur(80px);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Marco del Dispositivo Móvil en Pantalla Grande */
+  .page-wrapper {
+    background: var(--bg-gradient);
+    border-radius: 46px;
+    border: 7px solid rgba(255, 255, 255, 0.2);
+    box-shadow:
+      0 30px 80px -10px rgba(0, 0, 0, 0.85),
+      0 0 50px rgba(0, 160, 233, 0.25),
+      inset 0 1px 2px rgba(255, 255, 255, 0.5),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+    padding: 2.75rem 1.85rem 3.25rem;
+    overflow: hidden;
+    position: relative;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  /* Barra superior simuladora de altavoz/bocina de dispositivo */
+  .page-wrapper::before {
+    content: "";
+    position: absolute;
+    top: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 76px;
+    height: 5px;
+    background: rgba(0, 43, 84, 0.25);
+    border-radius: var(--radius-full);
+  }
+}
+
+/* Enlaces Accesibles */
+a {
+  color: inherit;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Indicador de Foco de Alta Visibilidad (WCAG AA/AAA) */
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--atomy-cyan);
+  outline-offset: 4px;
+  box-shadow: 0 0 0 6px rgba(0, 160, 233, 0.35);
+  border-radius: var(--radius-md);
+}
+
+/* Optimización para Reducción de Movimiento */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Animaciones Fluidas de Entrada */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-in {
+  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+
+/* Delays escalonados */
+.delay-1 { animation-delay: 0.08s; }
+.delay-2 { animation-delay: 0.16s; }
+.delay-3 { animation-delay: 0.24s; }
+.delay-4 { animation-delay: 0.32s; }
+.delay-5 { animation-delay: 0.40s; }
+.delay-6 { animation-delay: 0.48s; }
+
+/* Efecto de Pulso para CTA */
+@keyframes pulseDot {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 8px rgba(37, 211, 102, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+.pulse-indicator {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: var(--whatsapp-green);
+  border-radius: var(--radius-full);
+  animation: pulseDot 2s infinite cubic-bezier(0.45, 0, 0.55, 1);
+}
+
+/* Ajustes Responsive Específicos para Pantallas Muy Pequeñas */
+@media (max-width: 380px) {
+  body {
+    padding: 1.5rem 0.85rem 2.5rem;
+  }
+  .page-wrapper {
+    gap: 1.25rem;
+  }
+}

@@ -1,0 +1,86 @@
+---
+interface Props {
+  width?: number | string;
+  color?: string;
+  className?: string;
+}
+
+const { width = 110, color = '#00A0E9', className = '' } = Astro.props;
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 1000 500"
+  width={width}
+  class={`atomy-svg-logo ${className}`}
+  role="img"
+  aria-label="Logotipo oficial de ATOMY (atom美 ATOMY)"
+  preserveAspectRatio="xMidYMid meet"
+>
+  <!-- LÍNEA SUPERIOR: 'atom美' -->
+  <g fill="none" stroke={color} stroke-width="42" stroke-linecap="round" stroke-linejoin="round">
+    <!-- 'a' -->
+    <path d="M152 205 A 58 58 0 1 0 152 275 A 58 58 0 0 0 152 205 Z" />
+    <path d="M210 135 V 275" />
+
+    <!-- 't' -->
+    <path d="M272 55 V 275" />
+    <path d="M225 135 H 320" />
+
+    <!-- 'o' -->
+    <circle cx="415" cy="205" r="70" />
+
+    <!-- 'm' -->
+    <path d="M545 135 V 275" />
+    <path d="M545 180 C 545 125, 625 125, 625 185 V 275" />
+    <path d="M625 180 C 625 125, 705 125, 705 185 V 275" />
+
+    <!-- '美' (Caligrafía oficial de belleza Atomy) -->
+    <!-- Cuernos superiores -->
+    <path d="M820 60 L 845 105" stroke-width="38" />
+    <path d="M955 60 L 930 105" stroke-width="38" />
+    
+    <!-- 3 barras horizontales -->
+    <path d="M790 135 H 985" stroke-width="38" />
+    <path d="M805 178 H 970" stroke-width="38" />
+    <path d="M780 222 H 995" stroke-width="40" />
+    
+    <!-- Eje vertical -->
+    <path d="M888 100 V 222" stroke-width="38" />
+    
+    <!-- Piernas y base -->
+    <path d="M870 225 L 780 285" stroke-width="40" />
+    <path d="M905 225 L 995 285" stroke-width="40" />
+  </g>
+
+  <!-- LÍNEA INFERIOR: 'A T O M Y' VECTORIAL CON GEOMETRÍA EXACTA -->
+  <g fill="none" stroke={color} stroke-width="20" stroke-linecap="round" stroke-linejoin="round">
+    <!-- 'A' -->
+    <path d="M165 470 L 210 380 L 255 470" />
+    <path d="M185 435 H 235" />
+
+    <!-- 'T' -->
+    <path d="M330 380 H 410" />
+    <path d="M370 380 V 470" />
+
+    <!-- 'O' -->
+    <circle cx="510" cy="425" r="42" />
+
+    <!-- 'M' -->
+    <path d="M620 470 V 380 L 665 440 L 710 380 V 470" />
+
+    <!-- 'Y' -->
+    <path d="M780 380 L 825 430 L 870 380" />
+    <path d="M825 430 V 470" />
+  </g>
+</svg>
+
+<style>
+  .atomy-svg-logo {
+    display: inline-block;
+    height: auto;
+    max-width: 100%;
+    filter: drop-shadow(0 2px 4px rgba(0, 35, 75, 0.08));
+    vertical-align: middle;
+  }
+</style>

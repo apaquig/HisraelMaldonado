@@ -1,0 +1,183 @@
+---
+import { siteConfig } from '../config/site';
+
+const { footer, name, brand, role } = siteConfig;
+---
+
+<footer class="site-footer animate-in delay-6" role="contentinfo">
+  <!-- Botón Rápido para Compartir Perfil (Web Share API nativo con fallback a portapapeles) -->
+  <div class="share-section">
+    <button
+      type="button"
+      id="btn-share-profile"
+      class="share-button"
+      aria-label={`Compartir el perfil oficial de ${name}`}
+    >
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="18" cy="5" r="3"></circle>
+        <circle cx="6" cy="12" r="3"></circle>
+        <circle cx="18" cy="19" r="3"></circle>
+        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+      </svg>
+      <span>Compartir Perfil</span>
+    </button>
+    <span id="share-feedback" class="share-feedback" aria-live="polite"></span>
+  </div>
+
+  <div class="footer-divider" aria-hidden="true"></div>
+
+  <div class="footer-content">
+    <p class="brand-footer-text">
+      <strong>{brand}</strong> &bull; {name}
+    </p>
+    <p class="role-footer-text">{role}</p>
+    <p class="disclaimer-text">{footer.disclaimer}</p>
+    <p class="copyright-text">
+      &copy; {footer.copyrightYear} {name}. {footer.rightsText}
+    </p>
+  </div>
+</footer>
+
+<script>
+  // Script ligero y no bloqueante para compartir el enlace o copiar al portapapeles
+  const shareBtn = document.getElementById('btn-share-profile');
+  const feedback = document.getElementById('share-feedback');
+
+  if (shareBtn && feedback) {
+    shareBtn.addEventListener('click', async () => {
+      const shareData = {
+        title: document.title,
+        text: 'Conéctate con Israel Maldonado - Líder Oficial ATOMY',
+        url: window.location.href,
+      };
+
+      if (navigator.share && navigator.canShare && navigator.canShare(shareData)) {
+        try {
+          await navigator.share(shareData);
+        } catch (err) {
+          // El usuario canceló o hubo un error leve
+        }
+      } else {
+        try {
+          await navigator.clipboard.writeText(window.location.href);
+          feedback.textContent = '¡Enlace copiado al portapapeles!';
+          feedback.classList.add('visible');
+          setTimeout(() => {
+            feedback.textContent = '';
+            feedback.classList.remove('visible');
+          }, 3000);
+        } catch (err) {
+          feedback.textContent = 'Copia este enlace de la barra de direcciones.';
+          feedback.classList.add('visible');
+        }
+      }
+    });
+  }
+</script>
+
+<style>
+  .site-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    margin-top: 0.5rem;
+    gap: 1.25rem;
+  }
+
+  .share-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .share-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid #ffffff;
+    color: #004b87;
+    padding: 0.55rem 1.25rem;
+    border-radius: var(--radius-full);
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 45, 95, 0.2);
+    transition: all var(--transition-normal);
+  }
+
+  .share-button:hover {
+    background: #ffffff;
+    color: #00a0e9;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 45, 95, 0.3);
+  }
+
+  .share-button:active {
+    transform: translateY(1px);
+  }
+
+  .share-feedback {
+    font-size: 0.78rem;
+    color: #ffffff;
+    font-weight: 600;
+    text-shadow: 0 1px 3px rgba(0, 35, 75, 0.5);
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+    min-height: 1.1rem;
+  }
+
+  .share-feedback.visible {
+    opacity: 1;
+  }
+
+  .footer-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  }
+
+  .footer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    max-width: 460px;
+    padding: 0 0.5rem;
+  }
+
+  .brand-footer-text {
+    font-size: 0.85rem;
+    color: #ffffff;
+    letter-spacing: 0.02em;
+    font-weight: 600;
+    text-shadow: 0 1px 3px rgba(0, 35, 75, 0.3);
+  }
+
+  .brand-footer-text strong {
+    color: #ffffff;
+    letter-spacing: 0.05em;
+  }
+
+  .role-footer-text {
+    font-size: 0.8rem;
+    color: #e0f2fe;
+    font-weight: 500;
+  }
+
+  .disclaimer-text {
+    font-size: 0.74rem;
+    color: rgba(240, 249, 255, 0.85);
+    line-height: 1.4;
+    margin-top: 0.25rem;
+  }
+
+  .copyright-text {
+    font-size: 0.72rem;
+    color: rgba(240, 249, 255, 0.7);
+    margin-top: 0.25rem;
+  }
+</style>

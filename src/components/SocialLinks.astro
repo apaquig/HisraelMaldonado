@@ -1,0 +1,57 @@
+---
+import { siteConfig } from '../config/site';
+import SocialButton from './SocialButton.astro';
+
+// Filtramos las redes secundarias (excluyendo el WhatsApp principal que tiene su CTA dedicado)
+const otherSocialLinks = siteConfig.socialLinks.filter(link => link.icon !== 'whatsapp');
+---
+
+<nav class="social-links-section" aria-label="Canales oficiales y redes sociales">
+  <div class="section-header animate-in delay-3">
+    <span class="section-pill">Redes Sociales Oficiales</span>
+  </div>
+
+  <ul class="social-list">
+    {otherSocialLinks.map((link, index) => (
+      <SocialButton link={link} index={index} />
+    ))}
+  </ul>
+</nav>
+
+<style>
+  .social-links-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.25rem;
+  }
+
+  .section-pill {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #ffffff;
+    background: rgba(0, 45, 95, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    padding: 0.28rem 0.85rem;
+    border-radius: var(--radius-full);
+    text-shadow: 0 1px 3px rgba(0, 35, 75, 0.3);
+  }
+
+  .social-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+</style>
