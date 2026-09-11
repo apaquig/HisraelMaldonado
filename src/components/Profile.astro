@@ -1,27 +1,28 @@
 ---
-import { Image } from 'astro:assets';
 import { siteConfig } from '../config/site';
-import profilePhoto from '../assets/images/israel-maldonado.png';
-import atomyLogoImg from '../assets/images/atomy-logo.png';
+
+const baseUrl = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
 ---
 
 <header class="profile-header animate-in delay-1">
   <!-- Contenedor del Avatar con Anillo Blanco y Borde Celeste Atomy -->
   <div class="avatar-wrapper">
     <div class="avatar-ring">
-      <Image
-        src={profilePhoto}
-        alt={`Fotografía profesional de ${siteConfig.name} - Líder de ${siteConfig.brand}`}
-        width={360}
-        height={360}
-        densities={[1, 1.5, 2, 3]}
-        quality={95}
-        format="webp"
-        loading="eager"
-        fetchpriority="high"
-        decoding="async"
-        class="avatar-image"
-      />
+      <picture>
+        <source srcset={`${baseUrl}images/israel-maldonado.webp`} type="image/webp" />
+        <img
+          src={`${baseUrl}images/israel-maldonado.png`}
+          alt={`Fotografía profesional de ${siteConfig.name} - Líder de ${siteConfig.brand}`}
+          width="360"
+          height="360"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+          class="avatar-image"
+        />
+      </picture>
     </div>
     
     <!-- Badge de Verificado Oficial Atomy -->
@@ -40,14 +41,11 @@ import atomyLogoImg from '../assets/images/atomy-logo.png';
     <!-- Píldora de Marca con la Imagen Exacta del Logotipo Oficial de ATOMY -->
     <div class="brand-pill">
       <div class="logo-container">
-        <Image
-          src={atomyLogoImg}
+        <img
+          src={`${baseUrl}images/atomy-logo.png`}
           alt="Logotipo oficial de ATOMY"
-          width={104}
-          height={53}
-          densities={[1, 1.5, 2, 3]}
-          quality={100}
-          format="png"
+          width="104"
+          height="53"
           loading="eager"
           decoding="async"
           class="atomy-official-logo"
