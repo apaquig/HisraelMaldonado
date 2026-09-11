@@ -2,7 +2,8 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://israelmaldonado-atomy.com',
+  site: 'https://apaquig.github.io',
+  base: '/HisraelMaldonado',
   compressHTML: true,
   server: {
     port: 4321,

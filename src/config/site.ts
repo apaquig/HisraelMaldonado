@@ -91,7 +91,7 @@ export const siteConfig: SiteConfig = {
    * 👉 COLOCA AQUÍ TU DOMINIO FINAL
    * Ej: "https://israelmaldonado.com" o "https://visionatomy.com"
    */
-  siteUrl: "https://israelmaldonado-atomy.com",
+  siteUrl: "https://apaquig.github.io/HisraelMaldonado",
   siteName: "ATOMY | Israel Maldonado - Contacto y Redes Oficiales",
   metaTitle: "Israel Maldonado | Líder Oficial ATOMY - Contacto y Redes",
   metaDescription: "Página oficial de contacto de Israel Maldonado, líder y distribuidor independiente de ATOMY. Conéctate vía WhatsApp, Instagram, TikTok, YouTube y Facebook.",
