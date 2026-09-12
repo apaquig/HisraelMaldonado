@@ -89,7 +89,7 @@ export const siteConfig: SiteConfig = {
   verifiedText: "Distribuidor Oficial Atomy",
 
   // 2. CONFIGURACIÓN SEO Y DOMINIO DEFINITIVO
-  siteUrl: "https://apaquig.github.io/HisraelMaldonado",
+  siteUrl: "https://atomyvisioncenter.com",
   siteName: "ATOMY | Israel Maldonado - Contacto y Redes Oficiales",
   metaTitle: "Israel Maldonado | Líder Oficial ATOMY - Contacto y Redes",
   metaDescription: "Página oficial de contacto de Israel Maldonado, líder y distribuidor independiente de ATOMY. Conéctate vía WhatsApp, Instagram, TikTok, YouTube y Facebook.",
